@@ -4,44 +4,47 @@
     android:background="#383636"
     android:orientation="vertical">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="170dp"
-    android:background="#ffffff">
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        >
+        android:layout_height="200dp"
+        android:background="#ffffff">
 
-
-        <EditText
-            android:id="@+id/edt_input"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="0"
-            android:inputType="number"
-            android:textSize="50dp" />
+            android:layout_margin="16dp">
 
-        <TextView
-            android:id="@+id/tv_result"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/edt_input"
-            android:text="0"
-            android:textSize="45dp" />
+            <!--text cursorDrawable la chinh sua mau cho con tro.
+            muon doi mau cua thanh ngang duoi chan noi dung edit text
+             thi vao android/app/res/values/styles.xml/ roi doi mau colorAccent-->
+            <EditText
+                android:id="@+id/edt_input"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:inputType="text"
+                android:textColor="#484646"
+                android:textCursorDrawable="@null"
+                android:textSize="50dp" />
+
+            <TextView
+                android:id="@+id/tv_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/edt_input"
+                android:textSize="40dp" />
 
 
-    </RelativeLayout>
-</LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp">
+        android:layout_marginRight="16dp">
 
 
         <LinearLayout
@@ -54,7 +57,7 @@
 
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btn_7"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -64,31 +67,34 @@
                 android:textSize="30dp" />
 
             <Button
+                android:id="@+id/btn_4"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#383636"
 
+                android:background="#383636"
                 android:text="4"
                 android:textColor="#ffffff"
                 android:textSize="30dp" />
 
             <Button
+                android:id="@+id/btn_1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#383636"
 
+                android:background="#383636"
                 android:text="1"
                 android:textColor="#ffffff"
                 android:textSize="30dp" />
 
             <Button
+                android:id="@+id/btn_comma"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#383636"
 
+                android:background="#383636"
                 android:text=","
                 android:textColor="#ffffff"
                 android:textSize="30dp" />
@@ -103,6 +109,7 @@
 
 
             <Button
+                android:id="@+id/btn_8"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -112,6 +119,7 @@
                 android:textSize="30dp" />
 
             <Button
+                android:id="@+id/btn_5"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -121,6 +129,7 @@
                 android:textSize="30dp" />
 
             <Button
+                android:id="@+id/btn_2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -130,6 +139,7 @@
                 android:textSize="30dp" />
 
             <Button
+                android:id="@+id/btn_0"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -148,6 +158,7 @@
 
 
             <Button
+                android:id="@+id/btn_9"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -157,6 +168,7 @@
                 android:textSize="30dp" />
 
             <Button
+                android:id="@+id/btn_6"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -166,6 +178,7 @@
                 android:textSize="30dp" />
 
             <Button
+                android:id="@+id/btn_3"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -175,6 +188,7 @@
                 android:textSize="30dp" />
 
             <Button
+                android:id="@+id/btn_equal"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -190,11 +204,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
-
             android:weightSum="5">
 
 
             <Button
+                android:id="@+id/btn_C"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -204,6 +218,7 @@
                 android:textSize="30dp" />
 
             <Button
+                android:id="@+id/btn_div"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -213,6 +228,7 @@
                 android:textSize="30dp" />
 
             <Button
+                android:id="@+id/btn_mul"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -222,6 +238,7 @@
                 android:textSize="20dp" />
 
             <Button
+                android:id="@+id/btn_sub"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -229,7 +246,9 @@
                 android:text="–"
                 android:textColor="#ffffff"
                 android:textSize="30dp" />
+
             <Button
+                android:id="@+id/btn_sum"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
