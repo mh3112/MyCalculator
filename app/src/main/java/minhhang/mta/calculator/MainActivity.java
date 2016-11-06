@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import java.util.Arrays;
 import java.util.Currency;
 import java.util.Vector;
 import java.util.regex.Pattern;
@@ -128,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         Button btn = (Button) view;
         currentOperator = btn.getText().toString();
+        String s = edt_input.getText().toString();
         switch (view.getId()) {
             case R.id.btn_0:
             /*   edt_input.setText(); cai nay de set gia tri cho edt_input.
@@ -169,32 +171,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //xoa ca phan textview ket qua ben duoi
                 tv_result.setText("");
                 break;
-            case R.id.btn_comma:
+            case R.id.btn_comma: {
                 edt_input.append(".");
-
-                break;
-            case R.id.btn_div:
-                edt_input.append("/");
-                break;
-            case R.id.btn_mul:
-                edt_input.append("*");
-                break;
-            case R.id.btn_sub:
-                edt_input.append("-");
-                break;
-            case R.id.btn_sum:
-                edt_input.append("+");
-                String s=edt_input.getText().toString();
-                if(s.charAt(s.length()-1)=='+')
+                ///////////
+            }
+            break;
+            case R.id.btn_div: {
+                if (isOperator(String.valueOf(s.charAt(s.length() - 1))))
                     edt_input.append("");
-                break;
+                else
+                    edt_input.append("/");
+            }
+            break;
+            case R.id.btn_mul: {
+                if (isOperator(String.valueOf(s.charAt(s.length() - 1))))
+                    edt_input.append("");
+                else
+                    edt_input.append("*");
+            }
+            break;
+            case R.id.btn_sub: {
+                if (isOperator(String.valueOf(s.charAt(s.length() - 1))))
+                    edt_input.append("");
+                else
+                    edt_input.append("-");
+            }
+            break;
+            case R.id.btn_sum: {
+                if (isOperator(String.valueOf(s.charAt(s.length() - 1))))
+                    edt_input.append("");
+                else
+                    edt_input.append("+");
+            }
+            break;
             case R.id.btn_equal: {
                 tv_result.setText(bl.valueMath(edt_input.getText().toString()));
             }
             break;
-
         }
-
     }
 
     public void setOnLongClick() {
@@ -210,36 +224,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return false;
     }
 
-
-    public Vector<Double> arNumber;
-
-    public Vector<String> arOperation;
-
-    public int addArrOperation(String input) {
-        arOperation = new Vector<>();
-        char[] cArray = input.toCharArray();
-        for (int i = 0; i < cArray.length; i++) {
-            switch (cArray[i]) {
-                case '+':
-                    arOperation.add(cArray[i] + "");
-                    break;
-                case '–':
-                    arOperation.add(cArray[i] + "");
-                    break;
-                case 'x':
-                    arOperation.add(cArray[i] + "");
-                    break;
-                case '÷':
-                    arOperation.add(cArray[i] + "");
-                    break;
-                default:
-                    break;
-            }
-
-        }
-        return 0;
+    private boolean isOperator(String s) {
+        String[] operator = new String[]{"+", "-", "*", "/"};
+        Arrays.sort(operator);
+        return Arrays.binarySearch(operator, s) > -1;
     }
+/*
+    private boolean checkComma(String s){
+        String str = edt_input.getText().toString();
+        String[] operator = new String[]{"+", "-", "*", "/"};
+        for(int i=0;i<str.length();i++)
+            if (isOperator(String.valueOf(str[i])))
+                for(int j=0;j<i;j++)
 
 
+        return true;
+    }*/
 }
 
