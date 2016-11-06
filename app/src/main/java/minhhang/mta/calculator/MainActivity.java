@@ -20,9 +20,11 @@ import java.util.Currency;
 import java.util.Vector;
 import java.util.regex.Pattern;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener {
-//implements  View.OnClickListener vi co qua nhieu tool nen de ko phai goi lai cai Onclick... nhieu lan
+import nguyenvanquan7826.com.Balan;
 
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener {
+    //implements  View.OnClickListener vi co qua nhieu tool nen de ko phai goi lai cai Onclick... nhieu lan
+    Balan bl = new Balan();
     String display = "";
     String currentOperator = "";
     private TextView tv_result;
@@ -51,18 +53,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Anh xa:
-        //txtV=(TextView) findViewById(R.id.txtEx);
-
-        //Viet code:
-        ////
-        //txtV.setText("Hello World");
+        //viet code
         initWidget();
         setEventClickViews();
         setOnLongClick();
         hideKeyboard();
-
-
     }
 
     //ham an ban phim trong editText
@@ -97,9 +92,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_equal = (Button) findViewById(R.id.btn_equal);
         btn_comma = (Button) findViewById(R.id.btn_comma);
         btn_C = (Button) findViewById(R.id.btn_C);
-
     }
-
 
     public void setEventClickViews() {
         //set cho cac widget bat su kien. Lang nghe su kien
@@ -130,23 +123,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void setOnLongClick() {
-        btn_C.setOnLongClickListener(this);
-    }
 
-    /* public void onClickOperator(View v){
-         Button btn=(Button)v;
-         currentOperator=btn.getText().toString();
-     }*/
     @Override
     public void onClick(View view) {
         Button btn = (Button) view;
         currentOperator = btn.getText().toString();
         switch (view.getId()) {
             case R.id.btn_0:
-/*                edt_input.setText(); cai nay de set gia tri cho edt_input.
-neu dung cai nay thi khi click vao so khac. gia tri ban dau se bi xoa bo.
- trong khi ta can nhap dc nhieu so 1 luc =))*/
+            /*   edt_input.setText(); cai nay de set gia tri cho edt_input.
+                neu dung cai nay thi khi click vao so khac. gia tri ban dau se bi xoa bo.
+                trong khi ta can nhap dc nhieu so 1 luc =))*/
                 edt_input.append("0");
                 break;
             case R.id.btn_1:
@@ -180,10 +166,12 @@ neu dung cai nay thi khi click vao so khac. gia tri ban dau se bi xoa bo.
                 //xoa 1 ki tu truoc no. code mau
                 BaseInputConnection textFileInputConnection = new BaseInputConnection(edt_input, true);
                 textFileInputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL));
+                //xoa ca phan textview ket qua ben duoi
+                tv_result.setText("");
                 break;
-
             case R.id.btn_comma:
-                edt_input.append(",");
+                edt_input.append(".");
+
                 break;
             case R.id.btn_div:
                 edt_input.append("/");
@@ -196,44 +184,33 @@ neu dung cai nay thi khi click vao so khac. gia tri ban dau se bi xoa bo.
                 break;
             case R.id.btn_sum:
                 edt_input.append("+");
+                String s=edt_input.getText().toString();
+                if(s.charAt(s.length()-1)=='+')
+                    edt_input.append("");
                 break;
             case R.id.btn_equal: {
-                /*display = edt_input.getText().toString();
-                String[] operation = display.split(Pattern.quote("+"));
-                Double _result=operate(operation[0],operation[1],"+");
-                tv_result.setText(String.valueOf(_result));*/
+                tv_result.setText(bl.valueMath(edt_input.getText().toString()));
             }
             break;
+
         }
 
     }
 
+    public void setOnLongClick() {
+        btn_C.setOnLongClickListener(this);
+    }
+
     @Override
     public boolean onLongClick(View view) {
-        if (view.getId() == R.id.btn_C)
+        if (view.getId() == R.id.btn_C) {
             edt_input.setText("");
+            tv_result.setText("");
+        }
         return false;
     }
 
-    /*
-        public double operate(String a, String b, String op) {
-            switch (op) {
-                case "+":
-                    return Double.valueOf(a) + Double.valueOf(b);
-                case "–":
-                    return Double.valueOf(a) - Double.valueOf(b);
-                case "x":
-                    return Double.valueOf(a) * Double.valueOf(b);
-                case "÷":
-                    try {
-                        return Double.valueOf(a) / Double.valueOf(b);
-                    } catch (Exception ex) {
-                        Log.d("Error", ex.getMessage());
-                    }
-                default:
-                    return -1;
-            }
-        }*/
+
     public Vector<Double> arNumber;
 
     public Vector<String> arOperation;
