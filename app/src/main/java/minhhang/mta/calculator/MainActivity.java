@@ -1,7 +1,9 @@
 package minhhang.mta.calculator;
 
+import android.app.Notification;
 import android.content.DialogInterface;
 import android.media.MediaCodec;
+import android.os.Message;
 import android.renderscript.Double2;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -177,31 +179,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             break;
             case R.id.btn_div: {
-                if (isOperator(String.valueOf(s.charAt(s.length() - 1))))
-                    edt_input.append("");
-                else
-                    edt_input.append("/");
+                if (s.length() != 0) {
+                    if (isOperator(String.valueOf(s.charAt(s.length() - 1))))
+                        edt_input.append("");
+                    else
+                        edt_input.append("/");
+                }
             }
             break;
             case R.id.btn_mul: {
-                if (isOperator(String.valueOf(s.charAt(s.length() - 1))))
-                    edt_input.append("");
-                else
-                    edt_input.append("*");
+                if (s.length() != 0) {
+                    if (isOperator(String.valueOf(s.charAt(s.length() - 1))))
+                        edt_input.append("");
+                    else
+                        edt_input.append("*");
+                }
             }
             break;
             case R.id.btn_sub: {
-                if (isOperator(String.valueOf(s.charAt(s.length() - 1))))
-                    edt_input.append("");
-                else
-                    edt_input.append("-");
+                if (s.length() != 0) {
+                    if (isOperator(String.valueOf(s.charAt(s.length() - 1))))
+                        edt_input.append("");
+                    else
+                        edt_input.append("-");
+                }
             }
             break;
             case R.id.btn_sum: {
-                if (isOperator(String.valueOf(s.charAt(s.length() - 1))))
-                    edt_input.append("");
-                else
-                    edt_input.append("+");
+                if (s.length() != 0) {
+                    if (isOperator(String.valueOf(s.charAt(s.length() - 1))))
+                        edt_input.append("");
+                    else
+                        edt_input.append("+");
+                }
             }
             break;
             case R.id.btn_equal: {
